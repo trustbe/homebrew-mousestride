@@ -11,9 +11,14 @@ cask "mousestride" do
 
   app "MouseStrideDaemon.app"
 
-  postflight do
-    system "open", "#{appdir}/MouseStrideDaemon.app"
-  end
+  caveats <<~EOS
+    MouseStride is not code-signed. On first launch:
+      Right-click /Applications/MouseStrideDaemon.app → Open → click Open
+
+    Or run:
+      xattr -d com.apple.quarantine /Applications/MouseStrideDaemon.app
+      open /Applications/MouseStrideDaemon.app
+  EOS
 
   zap trash: [
     "~/Library/Preferences/com.mousestride.daemon.plist",
