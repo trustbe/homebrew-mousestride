@@ -11,6 +11,10 @@ cask "mousestride" do
 
   app "MouseStrideDaemon.app"
 
+  postflight do
+    system "open", "#{appdir}/MouseStrideDaemon.app"
+  end
+
   zap trash: [
     "~/Library/Preferences/com.mousestride.daemon.plist",
   ]
