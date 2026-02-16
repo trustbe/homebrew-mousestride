@@ -11,13 +11,6 @@ cask "mousestride" do
 
   app "MouseStrideDaemon.app"
 
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-d", "com.apple.quarantine", "#{appdir}/MouseStrideDaemon.app"]
-    system_command "/usr/bin/open",
-                   args: ["#{appdir}/MouseStrideDaemon.app"]
-  end
-
   zap trash: [
     "~/Library/Preferences/com.mousestride.daemon.plist",
   ]
