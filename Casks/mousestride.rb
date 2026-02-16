@@ -12,7 +12,7 @@ cask "mousestride" do
   app "MouseStrideDaemon.app"
 
   postflight do
-    system "open", "#{appdir}/MouseStrideDaemon.app"
+    system_command "/usr/bin/open", args: ["/Applications/MouseStrideDaemon.app"]
   end
 
   zap trash: [
